@@ -1,5 +1,7 @@
 package model;
 
+import model.devices.Car;
+
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 
@@ -51,5 +53,15 @@ public class Human {
 
     public Car getCar() {
         return this.car;
+    }
+
+    @Override
+    public String toString() {
+        return "Human{" +
+                "name='" + name + '\'' +
+                ", salary=" + salary +
+                ", pet=" + pet +
+                ", car=" + car +
+                '}';
     }
 }

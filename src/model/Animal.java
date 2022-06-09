@@ -40,4 +40,13 @@ public class Animal {
         }
         return false;
     }
+
+    @Override
+    public String toString() {
+        return "Animal{" +
+                "name='" + name + '\'' +
+                ", species='" + species + '\'' +
+                ", weight=" + weight +
+                '}';
+    }
 }
