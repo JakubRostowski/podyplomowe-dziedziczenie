@@ -1,4 +1,6 @@
 import model.Animal;
+import model.Car;
+import model.Human;
 
 public class Main {
 
@@ -14,5 +16,9 @@ public class Main {
         kicia.takeForAWalk();
         kicia.feed();
         kicia.takeForAWalk();
+
+        Human roman = new Human("Roman");
+        Car toyotka = new Car("Avensis", "Toyota");
+        roman.getACar(toyotka);
     }
 }
