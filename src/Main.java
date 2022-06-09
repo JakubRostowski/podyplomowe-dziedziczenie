@@ -1,6 +1,7 @@
 import model.Animal;
 import model.devices.Car;
 import model.Human;
+import model.devices.Device;
 import model.devices.Phone;
 
 public class Main {
@@ -19,19 +20,22 @@ public class Main {
         kicia.takeForAWalk();
 
         Human roman = new Human("Roman");
-        Car toyotka = new Car("Avensis", "Toyota", 10000.00);
+        Car toyotka = new Car("Avensis", "Toyota", 2001,10000.00);
 
         roman.setSalary(3000.00);
         roman.buyACar(toyotka);
 
-        Car drugaToyotka = new Car("Avensis", "Toyota", 10000.00);
+        Car drugaToyotka = new Car("Avensis", "Toyota", 2001, 10000.00);
         System.out.println(toyotka.equals(drugaToyotka));
 
-        Phone s20 = new Phone("Samsung Galaxy S20");
+        Phone s20 = new Phone("Galaxy S20", "Samsung", 2020);
 
         System.out.println(toyotka);
         System.out.println(roman);
         System.out.println(kicia);
         System.out.println(s20);
+
+        toyotka.turnOn();
+        s20.turnOn();
     }
 }

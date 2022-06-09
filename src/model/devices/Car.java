@@ -2,33 +2,21 @@ package model.devices;
 
 import java.util.Objects;
 
-public class Car {
-    private final String model;
-    private final String producer;
-
+public class Car extends Device{
     private final Double value;
 
-    public Car(String model, String producer, Double value) {
-        this.model = model;
-        this.producer = producer;
+    public Car(String model, String producer, int yearOfProduction, Double value) {
+        super(model, producer, yearOfProduction);
         this.value = value;
+    }
+
+    @Override
+    public void turnOn() {
+        System.out.println("Car is turned on.");
     }
 
     public Double getValue() {
         return value;
-    }
-
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        Car car = (Car) o;
-        return model.equals(car.model) && producer.equals(car.producer) && value.equals(car.value);
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hash(model, producer, value);
     }
 
     @Override
