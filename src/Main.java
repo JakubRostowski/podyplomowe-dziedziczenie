@@ -18,7 +18,9 @@ public class Main {
         kicia.takeForAWalk();
 
         Human roman = new Human("Roman");
-        Car toyotka = new Car("Avensis", "Toyota");
-        roman.getACar(toyotka);
+        Car toyotka = new Car("Avensis", "Toyota", 10000.00);
+        roman.buyACar(toyotka);
+
+        roman.setSalary(3000.00);
     }
 }

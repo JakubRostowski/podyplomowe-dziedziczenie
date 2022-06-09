@@ -2,7 +2,6 @@ package model;
 
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
-import java.util.Date;
 
 public class Human {
     private String name;
@@ -20,8 +19,16 @@ public class Human {
         this.pet = pet;
     }
 
-    public void getACar(Car car) {
-        this.car = car;
+    public void buyACar(Car car) {
+        if (this.salary > car.getValue()) {
+            this.car = car;
+            System.out.println(this.name + " has got a new car.");
+        } else if (this.salary > car.getValue()/12 ) {
+            this.car = car;
+            System.out.println(this.name + " has got a new car, but he has also credit.");
+        } else {
+            System.out.println(this.name + " can't afford a new car.");
+        }
     }
 
     public Double getSalary() {
@@ -40,5 +47,9 @@ public class Human {
             System.out.println("Salary can't be negative!");
         }
 
+    }
+
+    public Car getCar() {
+        return this.car;
     }
 }
