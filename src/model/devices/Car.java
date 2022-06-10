@@ -4,12 +4,16 @@ import model.Human;
 
 import java.util.Objects;
 
-public class Car extends Device{
+public abstract class Car extends Device{
     private final Double value;
 
     public Car(String model, String producer, int yearOfProduction, Double value) {
         super(model, producer, yearOfProduction);
         this.value = value;
+    }
+
+    public void refuel() {
+        System.out.println("Car has been refueled.");
     }
 
     @Override

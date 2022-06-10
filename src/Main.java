@@ -2,11 +2,15 @@ import model.creatures.Animal;
 import model.Human;
 import model.creatures.Pet;
 import model.devices.Car;
+import model.devices.Diesel;
 import model.devices.Phone;
+
+import java.net.MalformedURLException;
+import java.net.URL;
 
 public class Main {
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws MalformedURLException {
 
         Animal kicia = new Pet("Kicia", "cat");
         kicia.feed();
@@ -20,12 +24,12 @@ public class Main {
         kicia.takeForAWalk();
 
         Human roman = new Human("Roman");
-        Car toyotka = new Car("Avensis", "Toyota", 2001, 10000.00);
+        Car toyotka = new Diesel("Avensis", "Toyota", 2001, 10000.00);
 
         roman.setSalary(3000.00);
         roman.buyACar(toyotka);
 
-        Car drugaToyotka = new Car("Avensis", "Toyota", 2001, 10000.00);
+        Car drugaToyotka = new Diesel("Avensis", "Toyota", 2001, 10000.00);
         System.out.println(toyotka.equals(drugaToyotka));
 
         Phone s20 = new Phone("Galaxy S20", "Samsung", 2020);
@@ -50,5 +54,13 @@ public class Main {
 
         azor.feed();
         azor.feed(0.5);
+
+        s20.installAnApp("Angry Birds");
+        s20.installAnApp("Angry Birds", 1.0);
+        s20.installAnApp("Angry Birds", 1.0, "168.1.0.9");
+        s20.installAnApp("Angry Birds", "Angry Birds 2");
+        s20.installAnApp(new URL("https://play.google.com/store/apps/details?id=com.rovio.angrybirds&hl=pl&gl=US"));
+
+        toyotka.refuel();
     }
 }
