@@ -1,6 +1,8 @@
 package model;
 
-public class Animal {
+import java.util.Objects;
+
+public class Animal implements Sellable {
     private String name;
     private final String species;
     private Double weight;
@@ -42,11 +44,41 @@ public class Animal {
     }
 
     @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Animal animal = (Animal) o;
+        return Objects.equals(name, animal.name) && Objects.equals(species, animal.species) && Objects.equals(weight, animal.weight);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(name, species, weight);
+    }
+
+    @Override
     public String toString() {
         return "Animal{" +
                 "name='" + name + '\'' +
                 ", species='" + species + '\'' +
                 ", weight=" + weight +
                 '}';
+    }
+
+    @Override
+    public void sell(Human seller, Human buyer, Double price) {
+        if (seller.getPet().hashCode() == this.hashCode()) {
+            if (buyer.getCash() >= price) {
+                buyer.setCash(buyer.getCash() - price);
+                seller.setCash(seller.getCash() + price);
+                buyer.setPet(seller.getPet());
+                seller.setPet(null);
+                System.out.println(seller.getName() + " sold " + this.name + " to " + buyer.getName() + " for " + price);
+            } else {
+                System.out.println("Buyer can't afford it.");
+            }
+        } else {
+            System.out.println("Seller doesn't own it.");
+        }
     }
 }

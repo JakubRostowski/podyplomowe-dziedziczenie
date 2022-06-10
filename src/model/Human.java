@@ -1,6 +1,7 @@
 package model;
 
 import model.devices.Car;
+import model.devices.Phone;
 
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
@@ -9,9 +10,10 @@ public class Human {
     private String name;
 
     private Double salary;
+    private Double cash;
     private Animal pet;
-
     private Car car;
+    private Phone phone;
 
     public Human(String name) {
         this.name = name;
@@ -48,11 +50,42 @@ public class Human {
         } else {
             System.out.println("Salary can't be negative!");
         }
+    }
 
+    public String getName() {
+        return name;
     }
 
     public Car getCar() {
         return this.car;
+    }
+
+    public void setCar(Car car) {
+        this.car = car;
+    }
+
+    public Animal getPet() {
+        return pet;
+    }
+
+    public void setPet(Animal pet) {
+        this.pet = pet;
+    }
+
+    public Double getCash() {
+        return cash;
+    }
+
+    public void setCash(Double cash) {
+        this.cash = cash;
+    }
+
+    public Phone getPhone() {
+        return phone;
+    }
+
+    public void setPhone(Phone phone) {
+        this.phone = phone;
     }
 
     @Override

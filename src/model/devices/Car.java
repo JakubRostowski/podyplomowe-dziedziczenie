@@ -1,5 +1,7 @@
 package model.devices;
 
+import model.Human;
+
 import java.util.Objects;
 
 public class Car extends Device{
@@ -13,6 +15,19 @@ public class Car extends Device{
     @Override
     public void turnOn() {
         System.out.println("Car is turned on.");
+    }
+
+    @Override
+    public void sell(Human seller, Human buyer, Double price) {
+        if (seller.getCar().hashCode() == this.hashCode()) {
+            if (buyer.getCash() >= price) {
+                buyer.setCash(buyer.getCash() - price);
+                seller.setCash(seller.getCash() + price);
+                buyer.setCar(seller.getCar());
+                seller.setCar(null);
+                System.out.println(seller.getName() + " sold " + this.model + " to " + buyer.getName() + " for " + price);
+            }
+        }
     }
 
     public Double getValue() {

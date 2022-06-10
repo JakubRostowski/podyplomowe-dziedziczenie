@@ -1,7 +1,6 @@
 import model.Animal;
-import model.devices.Car;
 import model.Human;
-import model.devices.Device;
+import model.devices.Car;
 import model.devices.Phone;
 
 public class Main {
@@ -20,7 +19,7 @@ public class Main {
         kicia.takeForAWalk();
 
         Human roman = new Human("Roman");
-        Car toyotka = new Car("Avensis", "Toyota", 2001,10000.00);
+        Car toyotka = new Car("Avensis", "Toyota", 2001, 10000.00);
 
         roman.setSalary(3000.00);
         roman.buyACar(toyotka);
@@ -37,5 +36,13 @@ public class Main {
 
         toyotka.turnOn();
         s20.turnOn();
+
+        Human zbyszek = new Human("Zbyszek");
+
+        zbyszek.setCash(2000.00);
+        roman.setCash(0.00);
+
+        toyotka.sell(roman, zbyszek, 1000.00);
+        toyotka.sell(zbyszek, roman, 3000.00);
     }
 }

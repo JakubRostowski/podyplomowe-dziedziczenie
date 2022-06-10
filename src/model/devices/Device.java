@@ -1,8 +1,11 @@
 package model.devices;
 
+import model.Human;
+import model.Sellable;
+
 import java.util.Objects;
 
-public abstract class Device {
+public abstract class Device implements Sellable {
 
     final String model;
     final String producer;
