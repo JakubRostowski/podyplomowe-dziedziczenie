@@ -1,5 +1,6 @@
-import model.Animal;
+import model.creatures.Animal;
 import model.Human;
+import model.creatures.Pet;
 import model.devices.Car;
 import model.devices.Phone;
 
@@ -7,7 +8,7 @@ public class Main {
 
     public static void main(String[] args) {
 
-        Animal kicia = new Animal("Kicia", "cat");
+        Animal kicia = new Pet("Kicia", "cat");
         kicia.feed();
         kicia.takeForAWalk();
         kicia.takeForAWalk();
@@ -44,5 +45,10 @@ public class Main {
 
         toyotka.sell(roman, zbyszek, 1000.00);
         toyotka.sell(zbyszek, roman, 3000.00);
+
+        Animal azor = new Pet("Azor", "dog");
+
+        azor.feed();
+        azor.feed(0.5);
     }
 }

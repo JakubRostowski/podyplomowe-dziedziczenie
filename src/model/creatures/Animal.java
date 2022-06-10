@@ -1,8 +1,11 @@
-package model;
+package model.creatures;
+
+import model.Human;
+import model.Sellable;
 
 import java.util.Objects;
 
-public class Animal implements Sellable {
+public abstract class Animal implements Sellable, Feedable {
     private String name;
     private final String species;
     private Double weight;
@@ -21,6 +24,14 @@ public class Animal implements Sellable {
         if (!isDead()) {
             this.weight++;
             System.out.println("Animal feeded.");
+        }
+    }
+
+    @Override
+    public void feed(Double foodWeight) {
+        if (!isDead()) {
+            this.weight = this.weight + foodWeight;
+            System.out.println("Animal has been feed with " + foodWeight + "kg of food.");
         }
     }
 
@@ -81,4 +92,5 @@ public class Animal implements Sellable {
             System.out.println("Seller doesn't own it.");
         }
     }
+
 }
