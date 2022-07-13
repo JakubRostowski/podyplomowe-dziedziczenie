@@ -76,8 +76,7 @@ public abstract class Animal implements Sellable, Feedable {
                 '}';
     }
 
-    @Override
-    public void sell(Human seller, Human buyer, Double price) {
+    public void sell(Human seller, Human buyer, Double price, int i) {
         if (seller.getPet().hashCode() == this.hashCode()) {
             if (buyer.getCash() >= price) {
                 buyer.setCash(buyer.getCash() - price);

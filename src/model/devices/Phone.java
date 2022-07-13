@@ -11,8 +11,8 @@ public class Phone extends Device {
     private static final Double version = 1.0;
 
 
-    public Phone(String model, String producer, int yearOfProduction) {
-        super(model, producer, yearOfProduction);
+    public Phone(String model, String producer, int yearOfProduction, Double value) {
+        super(model, producer, yearOfProduction, value);
     }
 
     public void installAnApp(String appName) {
@@ -43,20 +43,29 @@ public class Phone extends Device {
     }
 
     @Override
+    public String toString() {
+        return "Phone{} " + super.toString();
+    }
+
+    @Override
+    public void sell(Human seller, Human buyer, Double price, int garageSlot) {
+        this.sell(seller, buyer, price);
+    }
+
+
     public void sell(Human seller, Human buyer, Double price) {
         if (seller.getPhone().hashCode() == this.hashCode()) {
             if (buyer.getCash() >= price) {
                 buyer.setCash(buyer.getCash() - price);
                 seller.setCash(seller.getCash() + price);
-                buyer.setPhone(seller.getPhone());
-                seller.setPhone(null);
+                buyer.setPet(seller.getPet());
+                seller.setPet(null);
                 System.out.println(seller.getName() + " sold " + this.model + " to " + buyer.getName() + " for " + price);
+            } else {
+                System.out.println("Buyer can't afford it.");
             }
+        } else {
+            System.out.println("Seller doesn't own it.");
         }
-    }
-
-    @Override
-    public String toString() {
-        return "Phone{} " + super.toString();
     }
 }
