@@ -74,5 +74,9 @@ public class Main {
 
         zbyszek.displayGarageContent();
         System.out.println("Zbyszek's garage value = " + zbyszek.getGarageValue());
+
+        System.out.println(toyotka.getTransactionsCount());
+        System.out.println(toyotka.wasOwner(zbyszek));
+        System.out.println(toyotka.didTransactionHadPlace(roman, zbyszek));
     }
 }

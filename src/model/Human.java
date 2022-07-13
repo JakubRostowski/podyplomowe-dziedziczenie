@@ -34,9 +34,11 @@ public class Human {
             if (this.salary > car.getValue()) {
                 this.garage[garageSlot] = car;
                 System.out.println(this.name + " has got a new car.");
+                car.getOwners().add(this);
             } else if (this.salary > car.getValue()/12 ) {
                 this.garage[garageSlot] = car;
                 System.out.println(this.name + " has got a new car, but he has also credit.");
+                car.getOwners().add(this);
             } else {
                 System.out.println(this.name + " can't afford a new car.");
             }
