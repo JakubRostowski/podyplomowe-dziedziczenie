@@ -3,6 +3,7 @@ package model.devices;
 import model.Human;
 
 import java.net.URL;
+import java.util.*;
 
 public class Phone extends Device {
 
@@ -10,9 +11,69 @@ public class Phone extends Device {
     private static final String protocol = "https";
     private static final Double version = 1.0;
 
+    Set<Application> apps;
+
 
     public Phone(String model, String producer, int yearOfProduction, Double value) {
         super(model, producer, yearOfProduction, value);
+        apps = new HashSet<>();
+    }
+
+    public void installAnApp(Application app, Human buyer) {
+        if (buyer.getCash() >= app.getPrice()) {
+            this.apps.add(app);
+            buyer.setCash(buyer.getCash() - app.getPrice());
+            System.out.println(app.getName() + " has been installed.");
+        }
+    }
+
+    public boolean isAppInstalled(Application app) {
+        return this.apps.contains(app);
+    }
+
+    public boolean isAppInstalled(String appName) {
+        for (Application app : this.apps) {
+            if (app.getName().equals(appName)) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    public void displayFreeApps() {
+        for (Application app : this.apps) {
+            if (app.getPrice() == 0) {
+                System.out.println(app.getName());
+            }
+        }
+    }
+
+    public Double getValueOfApps() {
+        Double value = 0.0;
+        for (Application app : this.apps) {
+            value += app.getPrice();
+        }
+        return value;
+    }
+
+    public void displayAppsAlphabetically() {
+        List<Application> sortedList = new ArrayList<>(this.apps);
+        sortedList.sort((o1, o2) -> 0);
+        sortedList.sort(Comparator.comparing(Application::getName));
+
+        for (Application app : sortedList) {
+            System.out.println(app.getName());
+        }
+    }
+
+    public void displayAppsOrderedByPrice() {
+        List<Application> sortedList = new ArrayList<>(this.apps);
+        sortedList.sort((o1, o2) -> 0);
+        sortedList.sort(Comparator.comparing(Application::getPrice));
+
+        for (Application app : sortedList) {
+            System.out.println(app.getName() + " - " + app.getPrice());
+        }
     }
 
     public void installAnApp(String appName) {

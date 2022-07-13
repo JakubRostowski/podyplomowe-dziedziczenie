@@ -78,5 +78,27 @@ public class Main {
         System.out.println(toyotka.getTransactionsCount());
         System.out.println(toyotka.wasOwner(zbyszek));
         System.out.println(toyotka.didTransactionHadPlace(roman, zbyszek));
+
+        Application calculator = new Application("calc", "1.0", 0.00);
+        Application game3 = new Application("star wars C", "1.7.0", 12.50);
+        Application game = new Application("star wars A", "1.2.3", 10.00);
+        Application game2 = new Application("star wars B", "1.1.0", 14.99);
+        Application notInstalled = new Application("bad title", "1.0", 2.95);
+
+        s20.installAnApp(calculator, zbyszek);
+        s20.installAnApp(game, zbyszek);
+        s20.installAnApp(game2, zbyszek);
+        s20.installAnApp(game3, zbyszek);
+
+        System.out.println(s20.isAppInstalled(calculator));
+        System.out.println(s20.isAppInstalled(notInstalled));
+
+        System.out.println(s20.isAppInstalled("calc"));
+        s20.displayFreeApps();
+        System.out.println(s20.getValueOfApps());
+
+        s20.displayAppsAlphabetically();
+        s20.displayAppsOrderedByPrice();
+
     }
 }
